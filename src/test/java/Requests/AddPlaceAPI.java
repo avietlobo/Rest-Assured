@@ -1,44 +1,42 @@
 package Requests;
 
 import io.restassured.RestAssured;
+import utils.JsonReader;
+import utils.propertyFileReader;
+
 import static io.restassured.RestAssured.*;
 
+import java.io.IOException;
+
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentAventReporter;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.ExtentKlovReporter;
 
 public class AddPlaceAPI {
 
 	@Test
-	public void addPlace()
+	public void addPlace() throws IOException
 	{
 		
-		RestAssured.baseURI="https://rahulshettyacademy.com";
-		String response=given().log().all().queryParam("key", "qaclick123").header("Content-Type","application/json")
-		.body("{\r\n" + 
-				"  \"location\": {\r\n" + 
-				"    \"lat\": -38.383494,\r\n" + 
-				"    \"lng\": 33.427362\r\n" + 
-				"  },\r\n" + 
-				"  \"accuracy\": 50,\r\n" + 
-				"  \"name\": \"Danish house\",\r\n" + 
-				"  \"phone_number\": \"(+91) 999 893 3937\",\r\n" + 
-				"  \"address\": \"59, side layout, cohen 09\",\r\n" + 
-				"  \"types\": [\r\n" + 
-				"    \"shoe park\",\r\n" + 
-				"    \"shop\"\r\n" + 
-				"  ],\r\n" + 
-				"  \"website\": \"http://google.com\",\r\n" + 
-				"  \"language\": \"Danish-IN\"\r\n" + 
-				"}\r\n" + 
-				"").when().log().all().post("/maps/api/place/add/json")
+		
+		ExtentHtmlReporter html = new ExtentHtmlReporter(System.getProperty("user.dir")+"\\Configuration\\Extent.html");
+		ExtentReports extent = new ExtentReports();
+		 extent.attachReporter(html);
+		 ExtentTest test = extent.createTest("Add Place API TC01");
+		 RestAssured.baseURI=propertyFileReader.readPropertiesFile().getProperty("baseURI");
+		 String response=given().log().all().queryParam("key", "qaclick123").header("Content-Type","application/json")
+		.body(JsonReader.readJsonfile("AddPlace.json")).when().log().all().post("/maps/api/place/add/json")
 		.then().log().all().assertThat().statusCode(200)
 		.extract().response().asString();
 		
+		test.pass("ADD PLACE API success");
 		
-		
-		
-		
-		
-		
+		extent.flush();
+	
 	}
 	
 }

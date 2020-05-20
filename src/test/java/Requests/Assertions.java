@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.path.json.JsonPath;
+import utils.JsonReader;
 
 public class Assertions {
 	
@@ -136,7 +137,7 @@ public class Assertions {
 			"  }\r\n" + 
 			" }";
 	
-	String response_demo5="{\r\n" + 
+	String response_demo51="{\r\n" + 
 			"  \"books\": [\r\n" + 
 			"    {\r\n" + 
 			"      \"isbn\": \"9781593275846\",\r\n" + 
@@ -229,6 +230,9 @@ public class Assertions {
 			"  ]\r\n" + 
 			"}";
 	
+	
+	String response_demo5=JsonReader.readJsonfile("demo5.json");
+	
 	//@Test
 	public void assertUsingJObject()
 	{
@@ -257,11 +261,8 @@ public class Assertions {
 	public void assertUsingJObject2()
 	{
 		JsonPath js= new JsonPath(response2);
-		//System.out.println(js.get("quiz.sport.q1.question"));
-		
 		System.out.println("HELLO");
 		Map<String,String> ls=js.getMap("store.bicycle");
-		//Map<String, String> hs1=js.getMap("lotto.winners");
 		List<String> ls1=js.getList("store.book.category");
 		
 	}
@@ -270,16 +271,13 @@ public class Assertions {
 	public void assertUsingJSON_Demo4()
 	{
 		JsonPath js= new JsonPath(response_demo4);
-		
 		System.out.println("HELLO");
-		
-	Map<String, Object> book = js.getObject("store.book[2]", new TypeRef<Map<String, Object>>() {});
-	System.out.println(book.get("category"));
-	System.out.println(book.get("author"));
-	System.out.println(book.get("title"));
-	System.out.println(book.get("isbn"));
-	System.out.println(book.get("price"));
-	
+		Map<String, Object> book = js.getObject("store.book[2]", new TypeRef<Map<String, Object>>() {});
+		System.out.println(book.get("category"));
+		System.out.println(book.get("author"));
+		System.out.println(book.get("title"));
+		System.out.println(book.get("isbn"));
+		System.out.println(book.get("price"));
 	}
 	
 	@Test

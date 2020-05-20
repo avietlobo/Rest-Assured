@@ -12,6 +12,7 @@ public class GetPlaceAPI {
 	@Test
 	public void getPlaceDetails() 
 	{
+		
 		RestAssured.baseURI="https://rahulshettyacademy.com";
 		String response=given().log().all().queryParam("key", "qaclick123").queryParam("place_id", "978945348acf0c5e267ad54a3fdffd19")
 		.header("Accept", "application/json")

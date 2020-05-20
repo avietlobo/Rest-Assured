@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1390" started-at="2020-05-19T13:05:17 IST" finished-at="2020-05-19T13:05:18 IST">
+  <suite name="Default suite" duration-ms="2562" started-at="2020-05-19T18:56:52 IST" finished-at="2020-05-19T18:56:55 IST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1390" started-at="2020-05-19T13:05:17 IST" finished-at="2020-05-19T13:05:18 IST">
-      <class name="Requests.Assertions">
-        <test-method status="PASS" signature="assertUsingJSON_Demo5()[pri:0, instance:Requests.Assertions@6325a3ee]" name="assertUsingJSON_Demo5" duration-ms="1356" started-at="2020-05-19T13:05:17 IST" finished-at="2020-05-19T13:05:18 IST">
+    <test name="Default test" duration-ms="2562" started-at="2020-05-19T18:56:52 IST" finished-at="2020-05-19T18:56:55 IST">
+      <class name="Requests.AddPlaceAPI">
+        <test-method status="PASS" signature="addPlace()[pri:0, instance:Requests.AddPlaceAPI@7b49cea0]" name="addPlace" duration-ms="2525" started-at="2020-05-19T18:56:52 IST" finished-at="2020-05-19T18:56:55 IST">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- assertUsingJSON_Demo5 -->
-      </class> <!-- Requests.Assertions -->
+        </test-method> <!-- addPlace -->
+      </class> <!-- Requests.AddPlaceAPI -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
